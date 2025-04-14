@@ -14,4 +14,4 @@ HRZN uses mainly three subcommands (partially still in developement):
 - [x] `hrzn push` to push files to the external storage
 - [ ] `hrzn pull` to pull files from the external storage
 - [ ] `hrzn check` to compare the checksum of the file in the external storage with
-  the checksome safed in the link file
+  the checksum safed in the link file

@@ -1,0 +1,9 @@
+<?xlnk version="0.1" encoding="UTF-8"?>
+<paths>
+    <origin>/path/to/file.txt</origin>
+    <external>/path/at/external/file.txt</external>
+</paths>
+<checksums>
+    <origin type="md5">d41d8cd98f00b204e9800998ecf8427e</origin>
+    <external type="md5">d41d8cd98f00b204e9800998ecf8427e</external>
+</checksums>
