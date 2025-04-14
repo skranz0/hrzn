@@ -32,10 +32,13 @@ function hrzn_push () {
     fi
 
     # create link file
-    echo "path_o    $(pwd)'$file'" > "$file.xlink"
-    echo "path_x    /external_storage/xchange_horizon/$file" >> "$file.xlink"
-    echo "checksum_o    $checksum_origin" >> "$file.xlink"
-    echo "checksum_x    $checksum_external" >> "$file.xlink"
+    touch "$file.xlink"
+    {
+        echo "path_o    $(pwd)'$file'";
+        echo "path_x    /external_storage/xchange_horizon/$file";
+        echo "checksum_o    $checksum_origin";
+        echo "checksum_x    $checksum_external";
+    } >> "$file.xlink"    
     echo "linkage file created: $file.xlink"
     echo "File pushed to external storage: /external_storage/xchange_horizon/$file"
 }
