@@ -41,6 +41,9 @@ function hrzn_push () {
     } >> "$file.xlink"    
     echo "linkage file created: $file.xlink"
     echo "File pushed to external storage: /external_storage/xchange_horizon/$file"
+
+    rm "$file"
+    echo "Original file removed"
 }
 
 function hrzn_pull () {
