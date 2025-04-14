@@ -6,7 +6,38 @@ function create_xlnk () {
 }
 
 function hrzn_push () {
-    echo "Pushing file to exchange..."
+    function show_help () {
+        echo "Push file to external storage and create linkage file."
+        echo "Usage: hrzn.sh [options] <file>"
+        echo "Options:"
+        echo "  -h, --help        Show this help message"
+        
+    }
+
+    if [[ $# -eq 0 ]]; then
+        show_help
+        exit 1
+    fi
+
+    file="$1"
+
+    cp "$file" /external_storage/xchange_horizon/ # TODO read external storage path from config
+    checksum_origin=$(md5sum "$file")
+    checksum_external=$(md5sum /external_storage/xchange_horizon/"$file")
+    if [[ "$checksum_origin" == "$checksum_external" ]]; then
+        echo "File integrity check passed."
+    else
+        echo "File integrity check failed."
+        exit 1
+    fi
+
+    # create link file
+    echo "path_o    $(pwd)'$file'" > "$file.xlink"
+    echo "path_x    /external_storage/xchange_horizon/$file" >> "$file.xlink"
+    echo "checksum_o    $checksum_origin" >> "$file.xlink"
+    echo "checksum_x    $checksum_external" >> "$file.xlink"
+    echo "linkage file created: $file.xlink"
+    echo "File pushed to external storage: /external_storage/xchange_horizon/$file"
 }
 
 function hrzn_pull () {
