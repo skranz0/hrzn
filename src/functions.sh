@@ -13,7 +13,6 @@ function hrzn_push () {
         echo "  -h, --help        Show this help message"
         
     }
-
     if [[ $# -eq 0 ]]; then
         show_help
         exit 1
@@ -47,9 +46,50 @@ function hrzn_push () {
 }
 
 function hrzn_pull () {
-    echo "Pulling file from exchange..."
+    function show_help () {
+        echo "Pull file from external storage."
+        echo "Usage: hrzn.sh [options] <xlnk-file>"
+        echo "Options:"
+        echo "  -h, --help        Show this help message"
+    }
+    if [[ $# -eq 0 ]]; then
+        show_help
+        exit 1
+    fi
+
+    xlnk_file="$1"
+    if [[ ! -f "$xlnk_file" ]]; then
+        echo "Linkage file not found: $xlnk_file"
+        exit 1
+    fi
+
+    while IFS= read -r line; do
+        if [[ $line == path_x* ]]; then
+            path_x=$(echo "$line" | cut -d' ' -f2)
+        elif [[ $line == checksum_x* ]]; then
+            checksum_x=$(echo "$line" | cut -d' ' -f2)
+        fi
+    done < "$xlnk_file"
+    if [[ ! -f "$path_x" ]]; then
+        echo "File not found in external storage: $path_x"
+        exit 1
+    fi
+    cp "$path_x" .
+    checksum_local=$(md5sum "$path_x")
+    if [[ "$checksum_local" == "$checksum_x" ]]; then
+        echo "File integrity check passed."
+    else
+        echo "File integrity check failed."
+        exit 1
+    fi
+    echo "File pulled from external storage: $path_x"
+    rm "$path_x"
+    echo "File removed from external storage: $path_x"
+    rm "$xlnk_file"
+    echo "Linkage file removed: $xlnk_file"
 }
 
 function hrzn_check () {
     echo "Checking file integrity..."
+    echo "Not implemented yet."
 }
