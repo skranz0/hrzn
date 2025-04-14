@@ -1,0 +1,4 @@
+path_o  /path/to/original/file.txt
+path_x  /path/at/external/file.txt
+md5sum_o        ead78ca3e9a3683364b75ec1fe9de3f0
+md5sum_x        ead78ca3e9a3683364b75ec1fe9de3f0
