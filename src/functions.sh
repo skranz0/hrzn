@@ -2,6 +2,7 @@
 
 
 # import config with path to external storage
+external_storage=""
 source "config" # TODO move to /etc/ and make a setter
 
 # function definitions

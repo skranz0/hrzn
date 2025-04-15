@@ -1,5 +1,11 @@
 #!/bin/bash
 
+
+#############################
+# author: Stefan Kranz
+# https://github.com/skranz0
+#############################
+
 # import funtions
 source functions.sh
 
