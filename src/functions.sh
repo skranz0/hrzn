@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# create exchange link file
-function create_xlnk () {
-    echo "Creating exchange link file..."
-}
 
+# import config with path to external storage
+source "config" # TODO move to /etc/ and make a setter
+
+# function definitions
 function hrzn_push () {
     function show_help () {
         echo "Push file to external storage and create linkage file."
@@ -20,9 +20,11 @@ function hrzn_push () {
 
     file="$1"
 
-    cp "$file" /external_storage/xchange_horizon/ # TODO read external storage path from config
+    # copy file to external storage
+    cp -i "$file" "$external_storage"
+    # calculate and compare checksums
     checksum_origin=$(md5sum "$file")
-    checksum_external=$(md5sum /external_storage/xchange_horizon/"$file")
+    checksum_external=$(md5sum "$external_storage""$file")
     if [[ "$checksum_origin" == "$checksum_external" ]]; then
         echo "File integrity check passed."
     else
@@ -34,12 +36,12 @@ function hrzn_push () {
     touch "$file.xlink"
     {
         echo "path_o    $(pwd)'$file'";
-        echo "path_x    /external_storage/xchange_horizon/$file";
+        echo "path_x    '$external_storage''$file'";
         echo "checksum_o    $checksum_origin";
         echo "checksum_x    $checksum_external";
     } >> "$file.xlink"    
     echo "linkage file created: $file.xlink"
-    echo "File pushed to external storage: /external_storage/xchange_horizon/$file"
+    echo "File pushed to external storage: '$external_storage''$file'"
 
     rm "$file"
     echo "Original file removed"
@@ -74,7 +76,7 @@ function hrzn_pull () {
         echo "File not found in external storage: $path_x"
         exit 1
     fi
-    cp "$path_x" .
+    cp -i "$path_x" .
     checksum_local=$(md5sum "$path_x")
     if [[ "$checksum_local" == "$checksum_x" ]]; then
         echo "File integrity check passed."
