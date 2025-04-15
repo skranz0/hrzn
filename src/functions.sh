@@ -14,7 +14,7 @@ function hrzn_push () {
         echo "  -h, --help        Show this help message"
         
     }
-    if [[ $# -eq 0 ]]; then
+    if [[ $# -eq 0 || "$1" == "-h" || "$1" == "--help" ]]; then
         show_help
         exit 1
     fi
@@ -22,10 +22,14 @@ function hrzn_push () {
     file="$1"
 
     # copy file to external storage
+    echo "Copying file to external storage..."
     cp -i "$file" "$external_storage"
     # calculate and compare checksums
+    echo "Calculating checksums..."
     checksum_origin=$(md5sum "$file")
     checksum_external=$(md5sum "$external_storage""$file")
+    echo "Checksum origin: $checksum_origin"
+    echo "Checksum external: $checksum_external"
     if [[ "$checksum_origin" == "$checksum_external" ]]; then
         echo "File integrity check passed."
     else
@@ -34,6 +38,7 @@ function hrzn_push () {
     fi
 
     # create link file
+    echo "Creating linkage file..."
     touch "$file.xlink"
     {
         echo "path_o    $(pwd)'$file'";
@@ -55,7 +60,7 @@ function hrzn_pull () {
         echo "Options:"
         echo "  -h, --help        Show this help message"
     }
-    if [[ $# -eq 0 ]]; then
+    if [[ $# -eq 0 || "$1" == "-h" || "$1" == "--help" ]]; then
         show_help
         exit 1
     fi
