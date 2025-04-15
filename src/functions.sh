@@ -26,8 +26,8 @@ function hrzn_push () {
     cp -i "$file" "$external_storage"
     # calculate and compare checksums
     echo "Calculating checksums..."
-    checksum_origin=$(md5sum "$file")
-    checksum_external=$(md5sum "$external_storage""$file")
+    checksum_origin=$(md5sum "$file" | cut -d' ' -f1)
+    checksum_external=$(md5sum "$external_storage""$file" | cut -d' ' -f1)
     echo "Checksum origin: $checksum_origin"
     echo "Checksum external: $checksum_external"
     if [[ "$checksum_origin" == "$checksum_external" ]]; then
