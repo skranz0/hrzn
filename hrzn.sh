@@ -7,8 +7,8 @@
 #############################
 
 # import funtions
-source push.sh
-source pull.sh
+source ./lib/push.sh
+source ./lib/pull.sh
 
 # function for help text
 function show_help() {

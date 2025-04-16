@@ -1,0 +1,80 @@
+#!/usr/bin/env bash
+set -e
+
+# Colors for better readability
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+YELLOW='\033[0;33m'
+NC='\033[0m' # No Color
+
+# Config Variables
+TOOL_NAME="hrzn"
+TOOL_VERSION="0.1"
+INSTALL_DIR="/usr/local/bin"
+CONFIG_DIR="/etc/$TOOL_NAME"
+
+# Check if the script is run as root
+check_root() {
+    if [[ "$(id -u)" -ne 0 ]]; then
+        echo -e "${RED}This script must be run as root${NC}"
+        echo -e "${YELLOW}Please run with sudo or as root user.${NC}"
+        exit 1
+    fi
+}
+
+# Copy files
+install_files() {
+    echo -e "$YELLOW Installing $TOOL_NAME...$NC"
+
+    mkdir -p "$INSTALL_DIR"
+    mkdir -p "$CONFIG_DIR"
+
+    # Copy main script to installation directory
+    cp "./$TOOL_NAME.sh" "$INSTALL_DIR/$TOOL_NAME"
+    chmod +x "$INSTALL_DIR/$TOOL_NAME"
+
+    # copy additional scripts
+    if [ -d "./lib" ]; then
+        mkdir -p "$INSTALL_DIR/lib/$TOOL_NAME"
+        cp -r ./lib "$INSTALL_DIR/lib/$TOOL_NAME"
+    fi
+
+    # Copy config file to config directory
+    if [ -f "./config" ]; then
+        cp "./config" "$CONFIG_DIR/config"
+        chmod 644 "$CONFIG_DIR/config"
+    fi
+
+    echo -e "${GREEN}Installation complete!${NC}"
+}
+
+# Check if the tool is in PATH
+check_path() {
+    if [[":$PATH" != *":$INSTALL_DIR"* ]]; then
+        echo -e "$YELLOW Warning: $INSTALL_DIR is not in your PATH.$NC"
+        echo -e "$YELLOW You may want to add it to your PATH for easier access.$NC"
+        echo -e "$YELLOW You can do this by adding the following line to your ~/.bashrc or ~/.bash_profile:$NC"
+        echo -e "$GREEN export PATH=\$PATH:$INSTALL_DIR$NC"
+    fi
+}
+
+# Show installation summary
+show_summary() {
+    echo -e "$GREEN $TOOL_NAME $TOOL_VERSION installed successfully!$NC"
+    echo -e "$YELLOW You can now use $TOOL_NAME by running: $INSTALL_DIR/$TOOL_NAME$NC"
+    echo -e "$YELLOW Configuration files are located at: $CONFIG_DIR$NC"
+}
+
+# Main function
+main() {
+    echo -e "$GREEN === Installation of $TOOL_NAME === $NC \n"
+
+    check_root
+    install_files
+
+    check_path
+    show_summary
+}
+
+# Run the main function
+main
