@@ -1,5 +1,9 @@
 # HRZN 🌅
 
+![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)
+![Bash Script](https://img.shields.io/badge/bash_script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white)
+[![Licence](https://img.shields.io/github/license/skranz0/hrzn?style=for-the-badge)](./LICENSE)
+
 To release some pressure from the storage of our HPC Watson, we can put larger
 files at an external storage past the *horizon* and retrieve them when needed.
 To keep both connected, an `xlnk` exchange link file is created.
