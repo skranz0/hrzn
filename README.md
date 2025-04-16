@@ -6,7 +6,7 @@
 
 To release some pressure from the storage of our HPC Watson, we can put larger
 files at an external storage past the *horizon* and retrieve them when needed.
-To keep both connected, an `xlnk` exchange link file is created.
+To keep both connected, a `.verge` exchange link file is created.
 
 By only moving large files and keeping them linked, we can save a lot of space
 and still keep project structure intact.

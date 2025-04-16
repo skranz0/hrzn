@@ -7,8 +7,8 @@
 #############################
 
 # import funtions
-source ./lib/push.sh
-source ./lib/pull.sh
+source /usr/local/bin/lib/hrzn/push.sh
+source /usr/local/bin/lib/hrzn/pull.sh
 
 # function for help text
 function show_help() {

@@ -3,7 +3,7 @@
 
 # import config with path to external storage
 external_storage=""
-source "config" # TODO move to /etc/ and make a setter
+source "/etc/hrzn/config" 
 
 # function definitions
 function hrzn_push () {
@@ -20,6 +20,11 @@ function hrzn_push () {
     fi
 
     file="$1"
+    # check if file exists
+    if [[ ! -f "$file" ]]; then
+        echo "File not found: $file"
+        exit 1
+    fi
 
     # copy file to external storage
     echo "Copying file to external storage..."
@@ -39,14 +44,14 @@ function hrzn_push () {
 
     # create link file
     echo "Creating linkage file..."
-    touch "$file.xlink"
+    touch "$file.verge"
     {
         echo "path_o    $(pwd)/$file";
         echo "path_x    $external_storage$file";
         echo "checksum_o    $checksum_origin";
         echo "checksum_x    $checksum_external";
-    } >> "$file.xlink"    
-    echo "linkage file created: $file.xlink"
+    } >> "$file.verge"    
+    echo "linkage file created: $file.verge"
     echo "File pushed to external storage: '$external_storage$file'"
 
     rm "$file"
