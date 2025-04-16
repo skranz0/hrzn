@@ -7,7 +7,8 @@
 #############################
 
 # import funtions
-source functions.sh
+source push.sh
+source pull.sh
 
 # function for help text
 function show_help() {
@@ -16,8 +17,8 @@ function show_help() {
     echo "  -h, --help        Show this help message"
     echo "  push        Push file to exchange"
     echo "  pull        Pull file from exchange"
-    echo "  check       Check file integrity"
-    echo "  link        Create exchange link file"
+    #echo "  check       Check file integrity"
+    #echo "  link        Create exchange link file"
 }
 
 # main logic
@@ -39,12 +40,6 @@ case "$command" in
         ;;
     pull)
         hrzn_pull "$@"
-        ;;
-    check)
-        hrzn_check "$@"
-        ;;
-    link)
-        create_xlnk "$@"
         ;;
     *)
         echo "Unknown command: $command"
