@@ -7,6 +7,20 @@ To keep both connected, an `xlnk` exchange link file is created.
 By only moving large files and keeping them linked, we can save a lot of space
 and still keep project structure intact.
 
+## Installation
+
+To install HRZN download and unpack the latest [release](https://github.com/skranz0/hrzn/releases)
+and run the `install` script:
+
+```bash
+sudo bash install
+```
+
+This will copy all neccessary files to the right locations in your system.
+This includes a `config` at `/etc/hrzn/config` and a `hrzn` executable in `/usr/local/bin/`.
+
+To use HRZN systemwide, you need to add it to your PATH.
+
 ## Usage
 
 HRZN uses mainly three subcommands (partially still in developement):
