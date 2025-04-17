@@ -6,7 +6,7 @@
 # https://github.com/skranz0
 #############################
 
-# import funtions
+# import functions
 source /usr/local/bin/lib/hrzn/push.sh
 source /usr/local/bin/lib/hrzn/pull.sh
 
