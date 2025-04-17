@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 # Colors for better readability
 GREEN='\033[0;32m'
 RED='\033[0;31m'
@@ -9,7 +10,7 @@ NC='\033[0m' # No Color
 function hrzn_pull () {
     function show_help () {
         echo "Pull file from external storage."
-        echo "Usage: hrzn.sh [options] <xlnk-file>"
+        echo "Usage: hrzn.sh [options] <verge-file>"
         echo "Options:"
         echo "  -h, --help        Show this help message"
     }
@@ -18,9 +19,9 @@ function hrzn_pull () {
         exit 1
     fi
 
-    xlnk_file="$1"
-    if [[ ! -f "$xlnk_file" ]]; then
-        echo "$RED Linkage file not found:$NC $xlnk_file"
+    verge_file="$1"
+    if [[ ! -f "$verge_file" ]]; then
+        echo "$RED Linkage file not found:$NC $verge_file"
         exit 1
     fi
 
@@ -32,7 +33,7 @@ function hrzn_pull () {
         elif [[ $line == checksum_x* ]]; then
             checksum_x=$(echo "$line" | cut -d' ' -f5)
         fi
-    done < "$xlnk_file"
+    done < "$verge_file"
     if [[ ! -f "$path_x" ]]; then
         echo "$RED File not found in external storage:$NC $path_x"
         exit 1
@@ -52,6 +53,6 @@ function hrzn_pull () {
     echo "$GREEN File pulled from external storage:$NC $path_x"
     rm "$path_x"
     echo "$GREEN File removed from external storage:$NC $path_x"
-    rm "$xlnk_file"
-    echo "$GREEN Linkage file removed:$NC $xlnk_file"
+    rm "$verge_file"
+    echo "$GREEN Linkage file removed:$NC $verge_file"
 }

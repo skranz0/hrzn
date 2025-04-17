@@ -33,7 +33,7 @@ function hrzn_push () {
     fi
 
     # copy file to external storage
-    echo "$YYELLOW Copying file to external storage...$NC"
+    echo "$YELLOW Copying file to external storage...$NC"
     cp -i "$file" "$external_storage"
     # calculate and compare checksums
     echo "$YELLOW Calculating checksums...$NC"
