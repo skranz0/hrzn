@@ -60,6 +60,7 @@ function hrzn_push () {
             echo "path_x    $external_storage$file";
             echo "checksum_o    $checksum_origin";
             echo "checksum_x    $checksum_external";
+            echo "date_pushed $(date)"
         } >> "$file.verge"
         cp "$file.verge" "$external_storage$file.verge"
         echo -e "${GREEN}Linkage file created:${NC} $file.verge"
