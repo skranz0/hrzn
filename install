@@ -42,12 +42,6 @@ install_files() {
         mkdir -p "$INSTALL_DIR/lib/$TOOL_NAME"
         cp -r ./lib "$INSTALL_DIR/lib/$TOOL_NAME"
     fi
-    
-    echo "Where do you want to put the config file?"
-    read -p "Enter the config directory (default: $CONFIG_DIR): " CONFIG_DIR
-    CONFIG_DIR=${CONFIG_DIR:-$CONFIG_DIR}
-
-    mkdir -p "$CONFIG_DIR"
 
     # Copy config file to config directory
     if [ -f "./config" ]; then
