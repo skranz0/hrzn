@@ -56,6 +56,7 @@ function hrzn_pull () {
         echo -e "${GREEN}File pulled from external storage"
         rm "$path_x"
         echo -e "${GREEN}File removed from external storage"
+        rm "$path_x.verge"
         rm "$verge_file"
         echo -e "${GREEN}Linkage file removed"
     done

@@ -61,6 +61,7 @@ function hrzn_push () {
             echo "checksum_o    $checksum_origin";
             echo "checksum_x    $checksum_external";
         } >> "$file.verge"
+        cp "$file.verge" "$external_storage$file.verge"
         echo -e "${GREEN}Linkage file created:${NC} $file.verge"
         echo -e "${GREEN}File pushed to external storage:${NC} '$external_storage$file'"
 
