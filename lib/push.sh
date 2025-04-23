@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Output to stdout and write to logfile
+exec > >(tee -a ./hrzn_push.log) 2>&1
+
 
 # Colors for better readability
 GREEN='\033[0;32m'
