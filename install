@@ -26,6 +26,10 @@ check_root() {
 install_files() {
     echo -e "$YELLOW Installing $TOOL_NAME...$NC"
 
+    echo "Where do you want to install $TOOL_NAME?"
+    read -p "Enter the installation directory (default: $INSTALL_DIR): " INSTALL_DIR
+    INSTALL_DIR=${INSTALL_DIR:-$INSTALL_DIR}
+
     mkdir -p "$INSTALL_DIR"
     mkdir -p "$CONFIG_DIR"
 
@@ -38,6 +42,12 @@ install_files() {
         mkdir -p "$INSTALL_DIR/lib/$TOOL_NAME"
         cp -r ./lib "$INSTALL_DIR/lib/$TOOL_NAME"
     fi
+    
+    echo "Where do you want to put the config file?"
+    read -p "Enter the config directory (default: $CONFIG_DIR): " CONFIG_DIR
+    CONFIG_DIR=${CONFIG_DIR:-$CONFIG_DIR}
+
+    mkdir -p "$CONFIG_DIR"
 
     # Copy config file to config directory
     if [ -f "./config" ]; then
