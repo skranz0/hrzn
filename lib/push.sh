@@ -18,7 +18,7 @@ source "./config"
 function hrzn_push () {
     function show_help () {
         echo "Push files to external storage and create linkage file."
-        echo "Usage: hrzn.sh [options] <file> ..."
+        echo "Usage: hrzn push [options] <file> ..."
         echo "Options:"
         echo "  -h, --help        Show this help message"
 

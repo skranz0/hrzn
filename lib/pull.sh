@@ -13,7 +13,7 @@ NC='\033[0m' # No Color
 function hrzn_pull () {
     function show_help () {
         echo "Pull files from external storage."
-        echo "Usage: hrzn.sh [options] <verge-file> ..."
+        echo "Usage: hrzn pull [options] <verge-file> ..."
         echo "Options:"
         echo "  -h, --help        Show this help message"
     }
@@ -22,6 +22,7 @@ function hrzn_pull () {
         exit 1
     fi
 
+    # TODO check if origin path is current location
     for verge_file in "$@"
     do
         if [[ ! -f "$verge_file" ]]; then
