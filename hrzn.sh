@@ -3,12 +3,14 @@
 
 #############################
 # author: Stefan Kranz
-# https://github.com/skranz0
+# https://codeberg.org/skranz0
 #############################
 
 # import functions
 source /usr/local/bin/lib/hrzn/push.sh
 source /usr/local/bin/lib/hrzn/pull.sh
+source /usr/local/bin/lib/hrzn/move.sh
+source /usr/local/bin/lib/hrzn/show_x.sh
 
 # function for help text
 function show_help() {
@@ -17,11 +19,12 @@ function show_help() {
     echo "  -h, --help        Show this help message"
     echo "  push        Push file to exchange"
     echo "  pull        Pull file from exchange"
-    #echo "  check       Check file integrity"
-    #echo "  link        Create exchange link file"
+    echo "  move        Change the origin path in a verge file"
+    echo "  show_x      Show the path of the external storage"
 }
 
-# main logic
+## main logic ##
+
 if [[ $# -eq 0 ]]; then
     show_help
     exit 1
@@ -40,6 +43,12 @@ case "$command" in
         ;;
     pull)
         hrzn_pull "$@"
+        ;;
+    move)
+        hrzn_move "$@"
+        ;;
+    show_x)
+        hrzn_show_x
         ;;
     *)
         echo "Unknown command: $command"

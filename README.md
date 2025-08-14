@@ -31,3 +31,17 @@ HRZN uses mainly three subcommands (partially still in developement):
 
 - [x] `hrzn push` to push files to the external storage
 - [x] `hrzn pull` to pull files from the external storage
+
+### The `.verge` file
+
+When a file is pushed away with hrzn, the verge file is left behind to keep the project structure intact
+
+It is structured like this:
+
+```
+path_o        original/path/of/file.txt
+path_x        external/path/of/file.txt
+checksum_o    a3cca2b2aa1e3b5b3b5aad99a8529074
+checksum_x    a3cca2b2aa1e3b5b3b5aad99a8529074
+date_pushed   Thu Aug 14 10:59:46 CEST 2025
+```

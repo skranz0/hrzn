@@ -13,7 +13,7 @@ NC='\033[0m' # No Color
 function hrzn_pull () {
     function show_help () {
         echo "Pull files from external storage."
-        echo "Usage: hrzn.sh [options] <verge-file> ..."
+        echo "Usage: hrzn pull [options] <verge-file> ..."
         echo "Options:"
         echo "  -h, --help        Show this help message"
     }
@@ -24,23 +24,38 @@ function hrzn_pull () {
 
     for verge_file in "$@"
     do
+        # check if verge file exists
         if [[ ! -f "$verge_file" ]]; then
             echo -e "${RED}Linkage file not found:${NC} $verge_file"
             exit 1
         fi
 
+        # go through file and find necessary variables
         while IFS= read -r line; do
-            if [[ $line == path_x* ]]; then
+            # find original path
+            if [[ $line == path_o* ]]; then
+                # Exit if current directory and origin do not match
+                if [[ $line -ne $(pwd)/* ]]; then
+                    echo -e "${RED}Current path does not match origin path in verge file!${NC}"
+                    echo -e "${YELLOW}If the file has been moved, use hrzn move to change the origin path.${NC}"
+                    exit 3
+                fi
+            # find external path
+            elif [[ $line == path_x* ]]; then
                 path_x=$(echo "$line" | cut -d' ' -f5)
                 echo -e "${YELLOW}Retrieving path from linkage file:${NC} $path_x"
+            # find checksum of external file
             elif [[ $line == checksum_x* ]]; then
                 checksum_x=$(echo "$line" | cut -d' ' -f5)
             fi
         done < "$verge_file"
+        # check if file exists at external storage
         if [[ ! -f "$path_x" ]]; then
             echo -e "${RED}File not found in external storage:${NC} $path_x"
             exit 1
         fi
+        
+        # copy and compare checksums
         echo -e "${YELLOW}Copying file from external storage...${NC}"
         cp -i "$path_x" .
         checksum_local=$(md5sum "$path_x" | cut -d' ' -f1)
@@ -53,6 +68,8 @@ function hrzn_pull () {
             echo -e "${RED}File integrity check failed.${NC}"
             exit 1
         fi
+        
+        # finish
         echo -e "${GREEN}File pulled from external storage"
         rm "$path_x"
         echo -e "${GREEN}File removed from external storage"
