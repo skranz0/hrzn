@@ -12,7 +12,7 @@ NC='\033[0m' # No Color
 
 # import config with path to external storage
 external_storage=""
-source "./config"
+source "/etc/hrzn/config"
 
 # function definitions
 function hrzn_push () {

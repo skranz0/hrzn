@@ -10,6 +10,7 @@
 source /usr/local/bin/lib/hrzn/push.sh
 source /usr/local/bin/lib/hrzn/pull.sh
 source /usr/local/bin/lib/hrzn/move.sh
+source /usr/local/bin/lib/hrzn/show_x.sh
 
 # function for help text
 function show_help() {
@@ -19,6 +20,7 @@ function show_help() {
     echo "  push        Push file to exchange"
     echo "  pull        Pull file from exchange"
     echo "  move        Change the origin path in a verge file"
+    echo "  show_x      Show the path of the external storage"
     #echo "  check       Check file integrity"
     #echo "  link        Create exchange link file"
 }
@@ -45,6 +47,9 @@ case "$command" in
         ;;
     move)
         hrzn_move "$@"
+        ;;
+    show_x)
+        hrzn_show_x
         ;;
     *)
         echo "Unknown command: $command"
