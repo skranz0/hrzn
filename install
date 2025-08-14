@@ -27,8 +27,8 @@ install_files() {
     echo -e "$YELLOW Installing $TOOL_NAME...$NC"
 
     echo "Where do you want to install $TOOL_NAME?"
-    read -p "Enter the installation directory (default: $INSTALL_DIR): " INSTALL_DIR
-    INSTALL_DIR=${INSTALL_DIR:-$INSTALL_DIR}
+    read -p "Enter the installation directory (default: $INSTALL_DIR): " CUSTOM_DIR
+    INSTALL_DIR=${CUSTOM_DIR:-$INSTALL_DIR}
 
     mkdir -p "$INSTALL_DIR"
     mkdir -p "$CONFIG_DIR"

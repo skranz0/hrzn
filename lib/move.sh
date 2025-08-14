@@ -37,7 +37,7 @@ function hrzn_move () {
             read -p "Continue? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
         fi
     done < $verge_file
-    sed path_o/s/\b/$old_origin\b/$new_origin/g $verge_file
+    sed -i path_o/s/\b/$old_origin\b/$new_origin/g $verge_file
     
     # append move action to the file
     {
