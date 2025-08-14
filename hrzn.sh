@@ -3,7 +3,7 @@
 
 #############################
 # author: Stefan Kranz
-# https://github.com/skranz0
+# https://codeberg.org/skranz0
 #############################
 
 # import functions
@@ -21,11 +21,10 @@ function show_help() {
     echo "  pull        Pull file from exchange"
     echo "  move        Change the origin path in a verge file"
     echo "  show_x      Show the path of the external storage"
-    #echo "  check       Check file integrity"
-    #echo "  link        Create exchange link file"
 }
 
-# main logic
+## main logic ##
+
 if [[ $# -eq 0 ]]; then
     show_help
     exit 1

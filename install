@@ -26,6 +26,7 @@ check_root() {
 install_files() {
     echo -e "$YELLOW Installing $TOOL_NAME...$NC"
 
+    # FIXME this is useless right now (see https://codeberg.org/skranz0/hrzn/issues/4)
     echo "Where do you want to install $TOOL_NAME?"
     read -p "Enter the installation directory (default: $INSTALL_DIR): " CUSTOM_DIR
     INSTALL_DIR=${CUSTOM_DIR:-$INSTALL_DIR}

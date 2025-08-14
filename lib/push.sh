@@ -28,6 +28,7 @@ function hrzn_push () {
         exit 1
     fi
 
+    # go through each file given as CLI parameter
     for file in "$@"
     do
         # check if file exists
@@ -62,10 +63,13 @@ function hrzn_push () {
             echo "checksum_x    $checksum_external";
             echo "date_pushed $(date)"
         } >> "$file.verge"
+        
+        # copy verge file to external storage as well
         cp "$file.verge" "$external_storage$file.verge"
         echo -e "${GREEN}Linkage file created:${NC} $file.verge"
         echo -e "${GREEN}File pushed to external storage:${NC} '$external_storage$file'"
-
+        
+        # remove original file
         rm "$file"
         echo -e "${GREEN}Original file removed${NC}"
     done

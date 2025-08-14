@@ -25,18 +25,22 @@ function hrzn_move () {
     verge_file=$1
     new_origin=$2
     
+    # check if linkage file exists
     if [[ ! -f "$verge_file" ]]; then
         echo -e "${RED}Linkage file not found:${NC} $verge_file"
         exit 1
     fi
     
+    # search for the origin path in the file
     while IFS= read -r line; do
         if [[ $line == path_o ]]; then
             old_origin=$line
+            # ask for confirmation
             echo -e "${YELLOW}Changing origin path from ${NC}$old_origin${YELLOW} to ${NC}$new_origin."
             read -p "Continue? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
         fi
     done < $verge_file
+    # subsitute old filepath for new one if the line starts with path_o
     sed -i path_o/s/\b/$old_origin\b/$new_origin/g $verge_file
     
     # append move action to the file
