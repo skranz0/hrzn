@@ -3,3 +3,8 @@
 *.log
 foo*
 bar*
+
+
+# Added by cargo
+
+/target
