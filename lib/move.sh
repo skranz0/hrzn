@@ -31,6 +31,18 @@ function hrzn_move () {
     fi
     
     while IFS= read -r line; do
-        # TODO add functionality
+        if [[ $line == path_o ]]; then
+            old_origin=$line
+            echo -e "${YELLOW}Changing origin path from ${NC}$old_origin${YELLOW} to ${NC}$new_origin."
+            read -p "Continue? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
+        fi
     done < $verge_file
+    sed path_o/s/\b/$old_origin\b/$new_origin/g $verge_file
+    
+    # append move action to the file
+    {
+        echo "date_moved $(date)"
+        echo "moved_from $old_origin"
+        echo "moved_to $new_origin"
+    } >> $verge_file
 }
