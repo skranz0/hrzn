@@ -31,6 +31,13 @@ function hrzn_pull () {
         fi
 
         while IFS= read -r line; do
+            if [[ $line == path_o* ]]; then
+                if [[ $line -ne $(pwd)/* ]]; then
+                    echo -e "${RED}Current path does not match origin path in verge file!${NC}"
+                    echo -e "${YELLOW}If the file has been moved, use hrzn move to change the origin path.${NC}"
+                    exit 3
+                fi
+            fi
             if [[ $line == path_x* ]]; then
                 path_x=$(echo "$line" | cut -d' ' -f5)
                 echo -e "${YELLOW}Retrieving path from linkage file:${NC} $path_x"
