@@ -9,7 +9,7 @@ NC='\033[0m' # No Color
 
 # Config Variables
 TOOL_NAME="hrzn"
-TOOL_VERSION="0.3"
+TOOL_VERSION="0.4"
 INSTALL_DIR="/usr/local/bin"
 CONFIG_DIR="/etc/$TOOL_NAME"
 
@@ -40,7 +40,7 @@ install_files() {
     # copy additional scripts
     if [ -d "./lib" ]; then
         mkdir -p "$INSTALL_DIR/lib/$TOOL_NAME"
-        cp -r ./lib "$INSTALL_DIR/lib/$TOOL_NAME"
+        cp -r ./lib/* "$INSTALL_DIR/lib/$TOOL_NAME"
     fi
 
     # Copy config file to config directory
