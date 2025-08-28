@@ -1,4 +1,5 @@
 use clap::Parser;
+use log::{error, warn, info, debug, trace};
 
 #[derive(Parser, Debug)]
 #[command(version, about, long_about = None)]
