@@ -45,9 +45,36 @@ fn main() {
         .get_matches();
 
     match matches.subcommand() {
-        Some(("push", sub_matches)) => {}
-        Some(("pull", sub_matches)) => {}
-        Some(("move", sub_matches)) => {}
+        Some(("push", sub_matches)) => {
+            if let Some(file) = sub_matches.get_one::<String>("file") {
+                push(file);
+            }
+        }
+        Some(("pull", sub_matches)) => {
+            if let Some(file) = sub_matches.get_one::<String>("verge-file") {
+                pull(file);
+            }
+        }
+        Some(("move", sub_matches)) => {
+            if let (Some(file), Some(path)) = (
+                sub_matches.get_one::<String>("verge-file"),
+                sub_matches.get_one::<String>("new-path"),
+            ) {
+                move_origin(file, path);
+            }
+        }
         _ => error!("Command not recognized"),
     }
+}
+
+fn push(file: &str) {
+    println!("Pushing file {}", file);
+}
+
+fn pull(verge_file: &str) {
+    println!("Pulling verge file {}", verge_file);
+}
+
+fn move_origin(verge_file: &str, new_path: &str) {
+    println!("Moving origin file {} to {}", verge_file, new_path);
 }
