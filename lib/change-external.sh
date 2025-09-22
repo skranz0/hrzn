@@ -22,7 +22,9 @@ function change-external () {
         esac
     done
 
-    for file in $VERGE_FILES; do
+    function change_path () {
+        local file=$1
+
         echo -e "${YELLOW}Changing external path for $file."
         # search for the external path in the file
         while IFS= read -r line; do
@@ -39,5 +41,7 @@ function change-external () {
             echo "changed_from $old_external"
             echo "moved_to $NEW_PATH"
         } >> $verge_file
-    done
+    }
+
+    parallel change_path ::: $VERGE_FILES
 }
