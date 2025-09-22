@@ -10,8 +10,9 @@ YELLOW='\033[0;33m'
 NC='\033[0m' # No Color
 
 function change-external () {
+    echo -e "${YELLOW}Searching verge files...${NC}"
     VERGE_FILES=$(find . -type f -name "*verge")
-    echo -e "${YELLOW} The following files will be changed:${NC}"
+    echo -e "${YELLOW}The following files will be changed:${NC}"
     echo $VERGE_FILES
     echo "Continue?"
     select continue in "Yes" "No"; do
