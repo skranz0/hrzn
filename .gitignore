@@ -8,3 +8,7 @@ bar*
 # Added by cargo
 
 /target
+
+# IDE files
+
+.idea/

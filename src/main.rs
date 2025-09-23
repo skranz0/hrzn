@@ -1,3 +1,5 @@
+mod hrzn;
+
 use clap::{Arg, Command, ArgAction};
 use log::{error, warn, info, debug, trace};
 
