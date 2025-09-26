@@ -14,22 +14,22 @@ and still keep project structure intact.
 ## Installation
 
 To install HRZN download and unpack the latest [release](https://github.com/skranz0/hrzn/releases)
-and run the `install` script:
+and use
 
 ```sh
-sudo bash install
+sudo make install
 ```
 
 This will copy all neccessary files to the right locations in your system.
 This includes a `config` at `/etc/hrzn/config` and a `hrzn` executable in `/usr/local/bin/`.
 
-To use HRZN systemwide, you need to add it to your PATH.
-
 ### Uninstallation
 
-The main script includes the subcommand `hrzn uninstall`. After confirmation and the option to search for
-remaining verge file, it removes all components from the system. If you added hrzn to your PATH, you need
-to remove it from there manually.
+Similarly, removing all hrzn components works with
+
+```sh
+sudo make uninstall
+```
 
 ## Usage
 
