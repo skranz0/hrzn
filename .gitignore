@@ -3,3 +3,7 @@
 *.log
 foo*
 bar*
+
+# For carcinization
+target/
+.idea/
