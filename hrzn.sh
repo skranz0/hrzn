@@ -25,6 +25,7 @@ function show_help() {
     echo "  move            Change the origin path in a verge file"
     echo "  show_x          Show the path of the external storage"
     echo "  change-external Find verge files and change the path of the external storage"
+    exit 0
 }
 
 ## main logic ##
