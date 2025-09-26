@@ -10,9 +10,9 @@ NC=\033[0m
 .PHONY: install uninstall
 
 install: hrzn config scripts
-	@printf "$(GREEN) hrzn installed successfully!$(NC)"
-	@printf "$(YELLOW) You can now use hrzn by running: $(INSTALL_DIR)/$(TOOL_NAME)$(NC)"
-	@printf "$(YELLOW) Configuration files are located at: $(CONFIG_DIR)$(NC)"
+	@printf "$(GREEN)hrzn installed successfully!$(NC)\n"
+	@printf "$(YELLOW)You can now use hrzn by running: $(INSTALL_DIR)/$(TOOL_NAME)$(NC)\n"
+	@printf "$(YELLOW)Configuration files are located at: $(CONFIG_DIR)$(NC)\n"
 
 uninstall:
 	rm -f $(INSTALL_DIR)/hrzn
@@ -21,7 +21,7 @@ uninstall:
 
 hrzn:
 	VERSION="0.4"
-	@printf "$(YELLOW) Installing $(TOOL_NAME) v$(VERSION)...$(NC)"
+	@printf "$(YELLOW) Installing hrzn...$(NC)\n"
 	cat hrzn.sh > $(INSTALL_DIR)/hrzn
 	chmod +x $(INSTALL_DIR)/hrzn
 
@@ -32,5 +32,5 @@ scripts:
 
 
 config:
-	@printf external_storage="/external_storage/xchange_horizon/" > $(CONFIG_DIR)/config
+	echo external_storage="/external_storage/xchange_horizon/" > $(CONFIG_DIR)/config
 	chmod 644 $(CONFIG_DIR)/config
