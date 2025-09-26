@@ -1,18 +1,18 @@
-INSTALL_DIR="/usr/local/bin"
-CONFIG_DIR="/etc/hrzn"
+INSTALL_DIR=/usr/local/bin
+CONFIG_DIR=/etc/hrzn
 
 # Colors for better readability
-GREEN='\033[0;32m'
-RED='\033[0;31m'
-YELLOW='\033[0;33m'
-NC='\033[0m' # No Color
+GREEN=\033[0;32m
+RED=\033[0;31m
+YELLOW=\033[0;33m
+NC=\033[0m
 
 .PHONY: install uninstall
 
 install: hrzn config scripts
-	@echo -e "$(GREEN) hrzn installed successfully!$(NC)"
-	@echo -e "$(YELLOW) You can now use hrzn by running: $(INSTALL_DIR)/$(TOOL_NAME)$(NC)"
-	@echo -e "$(YELLOW) Configuration files are located at: $(CONFIG_DIR)$(NC)"
+	@printf "$(GREEN) hrzn installed successfully!$(NC)"
+	@printf "$(YELLOW) You can now use hrzn by running: $(INSTALL_DIR)/$(TOOL_NAME)$(NC)"
+	@printf "$(YELLOW) Configuration files are located at: $(CONFIG_DIR)$(NC)"
 
 uninstall:
 	rm -f $(INSTALL_DIR)/hrzn
@@ -21,7 +21,7 @@ uninstall:
 
 hrzn:
 	VERSION="0.4"
-	@echo -e "$(YELLOW) Installing $(TOOL_NAME) v$(VERSION)...$(NC)"
+	@printf "$(YELLOW) Installing $(TOOL_NAME) v$(VERSION)...$(NC)"
 	cat hrzn.sh > $(INSTALL_DIR)/hrzn
 	chmod +x $(INSTALL_DIR)/hrzn
 
@@ -32,5 +32,5 @@ scripts:
 
 
 config:
-	@echo external_storage="/external_storage/xchange_horizon/" > $(CONFIG_DIR)/config
+	@printf external_storage="/external_storage/xchange_horizon/" > $(CONFIG_DIR)/config
 	chmod 644 $(CONFIG_DIR)/config
