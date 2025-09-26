@@ -30,7 +30,7 @@ scripts:
 	mkdir -p $(INSTALL_DIR)/lib/hrzn/
 	cp $(lib) $(INSTALL_DIR)/lib/hrzn/
 
-
 config:
-	echo external_storage="/external_storage/xchange_horizon/" > $(CONFIG_DIR)/config
+	mkdir -p $(CONFIG_DIR)
+	echo external_storage=/external_storage/xchange_horizon/ > $(CONFIG_DIR)/config
 	chmod 644 $(CONFIG_DIR)/config
