@@ -1,0 +1,17 @@
+[Alignments]
+dir = "/nucleus/results/ALN"
+subdirs = ["barley", "melissa", "thyme", "wheat"]
+filetypes = [".bam"]
+
+[Assembly]
+dir = "/nucleus/results/ASM"
+subdirs = ["barley", "melissa", "thyme", "wheat"]
+
+[Correction]
+dir = "/nucleus/results/COR"
+subdirs = ["barley", "melissa", "thyme", "wheat"]
+
+[Variants]
+die = "/nucleus/results/VAR"
+subdirs = ["barley", "melissa", "thyme", "wheat"]
+filetypes = [".vcf", ".gvcf"]

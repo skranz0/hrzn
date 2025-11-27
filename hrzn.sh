@@ -10,9 +10,7 @@
 
 source /usr/local/bin/lib/hrzn/push.sh
 source /usr/local/bin/lib/hrzn/pull.sh
-source /usr/local/bin/lib/hrzn/move.sh
-source /usr/local/bin/lib/hrzn/show_x.sh
-source /usr/local/bin/lib/hrzn/change_external.sh
+source /usr/local/bin/lib/hrzn/list.sh
 
 # function for help text
 
@@ -22,9 +20,7 @@ function show_help() {
     echo "  -h, --help        Show this help message"
     echo "  push            Push file to exchange"
     echo "  pull            Pull file from exchange"
-    echo "  move            Change the origin path in a verge file"
-    echo "  show_x          Show the path of the external storage"
-    echo "  change-external Find verge files and change the path of the external storage"
+    echo "  list            List available directories and subdirectories"
     exit 0
 }
 
@@ -51,14 +47,8 @@ case "$command" in
     pull)
         hrzn_pull "$@"
         ;;
-    move)
-        hrzn_move "$@"
-        ;;
-    show_x)
-        hrzn_show_x
-        ;;
-    change-external)
-        change-external
+    list)
+        hrzn_list
         ;;
     *)
         echo "Unknown command: $command"
