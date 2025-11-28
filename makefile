@@ -9,7 +9,7 @@ NC=\033[0m
 
 .PHONY: install uninstall
 
-install: hrzn config scripts
+install: hrzn scripts
 	@printf "${GREEN}hrzn installed successfully!${NC}\n"
 	@printf "${YELLOW}You can now use hrzn by running: ${INSTALL_DIR}/hrzn\n"
 	@printf "${YELLOW}Configuration files are located at: ${CONFIG_DIR}${NC}\n"
@@ -17,7 +17,7 @@ install: hrzn config scripts
 uninstall:
 	rm -f ${INSTALL_DIR}/hrzn
 	rm -r ${INSTALL_DIR}/lib/hrzn/
-	rm -f ${CONFIG_DIR}/config
+	#rm -f ${CONFIG_DIR}/config
 
 hrzn:
 	VERSION="0.5"

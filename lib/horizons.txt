@@ -1,0 +1,50 @@
+# we have 6 six types of folders coressponding to the type of ANALYSIS that was performed on the data
+# we arrange the results by the REFERENCE SPECIES
+
+# ALigNments / mappings:
+# make sure that names of result files: start with ALN, contain the exact name of REFerence and some hint on the QueRY 
+ALN:
+	barley
+	melissa
+	thyme
+	wheat
+
+# ASseMblies: either contig- or chromosome-scale
+# make sure that names of result files start with ASM and contain some hint on the assembly tool/algorithm applied
+ASM:
+	barley
+	melissa
+	thyme
+	wheat
+
+# CORrected reads
+# make sure that names of result files start with COR and contain some hint on the correction algorithm applied
+COR:
+	barley
+	melissa
+	thyme
+	wheat
+
+# all the inputed gathered that is needed for LRGT
+#@Thomas: please specify what you expect
+LRGT:
+	barley
+	melissa
+	thyme
+	wheat
+
+# METhylation analyses
+# make sure that names of result files start with MET and conatin some hint on the tool
+MET:
+	barley
+	melissa
+	thyme
+	wheat
+
+# VARiant calling
+# make sure that names of result files start with VAR, contain some hint on SMALL or LARGE SVs and the tool and if SSA (single sample) or MSA (multi sample)
+VAR:
+	barley
+	melissa
+	thyme
+	wheat

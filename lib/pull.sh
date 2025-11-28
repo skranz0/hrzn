@@ -37,8 +37,8 @@ function hrzn_pull () {
                 # Exit if current directory and origin do not match
                 if [[ $line -ne $(pwd)/* ]]; then
                     echo -e "${RED}Current path does not match origin path in verge file!${NC}"
-                    echo -e "${YELLOW}If the file has been moved, use hrzn move to change the origin path.${NC}"
-                    exit 3
+                    #echo -e "${YELLOW}If the file has been moved, use hrzn move to change the origin path.${NC}"
+                    exit 1
                 fi
             # find external path
             elif [[ $line == path_x* ]]; then
@@ -54,7 +54,7 @@ function hrzn_pull () {
             echo -e "${RED}File not found in external storage:${NC} $path_x"
             exit 1
         fi
-        
+
         # copy and compare checksums
         echo -e "${YELLOW}Copying file from external storage...${NC}"
         cp -i "$path_x" .
@@ -68,7 +68,7 @@ function hrzn_pull () {
             echo -e "${RED}File integrity check failed.${NC}"
             exit 1
         fi
-        
+
         # finish
         echo -e "${GREEN}File pulled from external storage"
         rm "$path_x"
