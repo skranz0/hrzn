@@ -83,7 +83,7 @@ function hrzn_push () {
         } >> "$file.verge"
 
         # copy verge file to external storage as well
-        cp "$file.verge" "$external_storage$file.verge"
+        cp "$file.verge" "$external_storage/$horizon/$species/$file.verge"
         echo -e "${GREEN}Verge file created:${NC} $file.verge"
         echo -e "${GREEN}File pushed to horizon:${NC} $external_storage/$horizon/$species/$file"
 

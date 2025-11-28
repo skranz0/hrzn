@@ -8,9 +8,9 @@
 
 # import functions
 
-source /usr/local/bin/lib/hrzn/push.sh
-source /usr/local/bin/lib/hrzn/pull.sh
-source /usr/local/bin/lib/hrzn/list.sh
+source /software/lib/hrzn/push.sh
+source /software/lib/hrzn/pull.sh
+source /software/lib/hrzn/list.sh
 
 # function for help text
 

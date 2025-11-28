@@ -1,4 +1,4 @@
-INSTALL_DIR=/software/
+INSTALL_DIR=/software
 CONFIG_DIR=/etc/hrzn
 
 # Colors for better readability
